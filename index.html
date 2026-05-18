@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>TELEGye</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, Helvetica, sans-serif;
+}
+
+body{
+    background:#050816;
+    color:white;
+    overflow-x:hidden;
+}
+
+/* Fondo animado */
+body::before{
+    content:"";
+    position:fixed;
+    width:100%;
+    height:100%;
+    background:
+        radial-gradient(circle at top left,#00bfff33,transparent 40%),
+        radial-gradient(circle at bottom right,#0044ff22,transparent 40%);
+    z-index:-1;
+    animation:bgMove 12s infinite alternate;
+}
+
+@keyframes bgMove{
+    from{
+        transform:scale(1) rotate(0deg);
+    }
+    to{
+        transform:scale(1.1) rotate(2deg);
+    }
+}
+
+/* HEADER */
+header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:20px 50px;
+    background:rgba(0,0,0,0.4);
+    backdrop-filter:blur(10px);
+    border-bottom:2px solid #00bfff;
+    position:sticky;
+    top:0;
+    z-index:100;
+}
+
+header img{
+    width:180px;
+    filter:drop-shadow(0 0 10px #00bfff);
+}
+
+header button{
+    background:linear-gradient(45deg,#00bfff,#0044ff);
+    border:none;
+    padding:12px 22px;
+    border-radius:30px;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+header button:hover{
+    transform:scale(1.08);
+    box-shadow:0 0 20px #00bfff;
+}
+
+header button a{
+    text-decoration:none;
+    color:white;
+    font-weight:bold;
+}
+
+/* HERO */
+.hero{
+    text-align:center;
+    padding:100px 20px;
+}
+
+.hero h2{
+    font-size:4rem;
+    margin-bottom:20px;
+    color:#00cfff;
+    text-shadow:0 0 20px #00bfff;
+    animation:glow 3s infinite alternate;
+}
+
+@keyframes glow{
+    from{
+        text-shadow:0 0 10px #00bfff;
+    }
+    to{
+        text-shadow:0 0 30px #00e1ff;
+    }
+}
+
+.hero p{
+    max-width:850px;
+    margin:auto;
+    font-size:1.2rem;
+    line-height:1.8;
+    color:#d7e9ff;
+}
+
+/* BOTONES */
+.buttons{
+    margin-top:40px;
+    display:flex;
+    justify-content:center;
+    gap:20px;
+    flex-wrap:wrap;
+}
+
+.buttons a{
+    text-decoration:none;
+    color:white;
+    padding:15px 28px;
+    border-radius:40px;
+    background:linear-gradient(45deg,#0077ff,#00d4ff);
+    transition:0.3s;
+    font-weight:bold;
+    box-shadow:0 0 15px #00bfff44;
+}
+
+.buttons a:hover{
+    transform:translateY(-5px);
+    box-shadow:0 0 25px #00d4ff;
+}
+
+/* CARDS */
+.info-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:25px;
+    padding:50px;
+}
+
+.card{
+    background:rgba(255,255,255,0.05);
+    border:1px solid rgba(0,191,255,0.3);
+    border-radius:20px;
+    padding:30px;
+    transition:0.4s;
+    backdrop-filter:blur(8px);
+    position:relative;
+    overflow:hidden;
+}
+
+.card::before{
+    content:"";
+    position:absolute;
+    width:200%;
+    height:200%;
+    background:linear-gradient(45deg,transparent,#00bfff22,transparent);
+    transform:rotate(25deg);
+    top:-100%;
+    left:-100%;
+    transition:0.8s;
+}
+
+.card:hover::before{
+    top:100%;
+    left:100%;
+}
+
+.card:hover{
+    transform:translateY(-10px);
+    box-shadow:0 0 25px #00bfff55;
+}
+
+.card h3{
+    color:#00d4ff;
+    margin-bottom:15px;
+    font-size:1.5rem;
+}
+
+.card p{
+    color:#d0ddff;
+    line-height:1.6;
+}
+
+/* FOOTER */
+footer{
+    text-align:center;
+    padding:30px;
+    background:#02040d;
+    border-top:1px solid #00bfff33;
+    color:#9dbfff;
+}
+
+/* TICKER */
+.ticker{
+    width:100%;
+    overflow:hidden;
+    white-space:nowrap;
+    background:#001133;
+    padding:12px 0;
+    border-top:2px solid #00bfff;
+    border-bottom:2px solid #00bfff;
+}
+
+.ticker span{
+    display:inline-block;
+    padding-left:100%;
+    animation:ticker 20s linear infinite;
+    color:#00d4ff;
+    font-weight:bold;
+    letter-spacing:2px;
+}
+
+@keyframes ticker{
+    from{
+        transform:translateX(0);
+    }
+    to{
+        transform:translateX(-100%);
+    }
+}
+
+/* RESPONSIVE */
+@media(max-width:768px){
+
+    header{
+        flex-direction:column;
+        gap:20px;
+    }
+
+    .hero h2{
+        font-size:2.5rem;
+    }
+
+    .hero p{
+        font-size:1rem;
+    }
+
+    .info-grid{
+        padding:25px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header id="header">
+    <img src="/Users/apple/Downloads/logo/logo-telegye.png" alt="TeleGye Logo">
+
+    <button>
+        <a href="login.html">INICIAR SESIÓN</a>
+    </button>
+</header>
+
+<main>
+
+<section class="hero">
+    <h2 id="typing"></h2>
+
+    <p>
+        Una señal creada para conectar historias, programas y contenido moderno con una vibra urbana ecuatoriana.
+        Desde noticias locales hasta transmisiones especiales, TeleGye ilumina la pantalla con energía azul neón y ritmo costeño 🌊📺
+    </p>
+
+    <div class="buttons">
+        <a href="https://www.telegye.ec" target="_blank">Sitio Oficial</a>
+
+        <a href="https://facebook.com/TELEGye" target="_blank">Facebook</a>
+
+        <a href="https://youtube.com/@TeleGyeEcuador" target="_blank">YouTube</a>
+    </div>
+</section>
+
+<section class="info-grid">
+
+    <div class="card">
+        <h3>Programación</h3>
+        <p>
+            Noticias, deportes, cultura, entrevistas y espacios juveniles en una sola señal.
+        </p>
+    </div>
+
+    <div class="card">
+        <h3>Streaming</h3>
+        <p>
+            Conexión digital 24/7 con contenido multimedia para computadoras y móviles.
+        </p>
+    </div>
+
+    <div class="card">
+        <h3>Comunidad</h3>
+        <p>
+            Eventos locales, educación, talento emergente y participación interactiva.
+        </p>
+    </div>
+
+    <div class="card">
+        <h3>Main 697</h3>
+        <p>
+            Bloque experimental HTML visual con identidad futurista para TeleGye.
+        </p>
+    </div>
+
+</section>
+
+</main>
+
+<footer>
+    <p>© 2026 TeleGye Ecuador • www.telegye.ec</p>
+</footer>
+
+<div class="ticker">
+    <span>
+        TELEGYE EN VIVO • FACEBOOK @TELEGYE • YOUTUBE @TELEGYEECUADOR • MAIN 697 HTML BROADCAST SYSTEM • ECUADOR DIGITAL NETWORK 📡
+    </span>
+</div>
+
+<script>
+// EFECTO ESCRITURA
+const text = "Bienvenidos a TeleGye";
+const typing = document.getElementById("typing");
+
+let i = 0;
+
+function writeText(){
+    if(i < text.length){
+        typing.innerHTML += text.charAt(i);
+        i++;
+        setTimeout(writeText, 90);
+    }
+}
+
+writeText();
+
+// EFECTO PARALLAX SUAVE
+document.addEventListener("mousemove", (e) => {
+
+    let x = (window.innerWidth - e.pageX * 2) / 100;
+    let y = (window.innerHeight - e.pageY * 2) / 100;
+
+    document.body.style.backgroundPosition = `${x}px ${y}px`;
+
+});
+
+// MENSAJE CONSOLA
+console.log("📺 TELEGYE MAIN 697 SYSTEM ONLINE");
+</script>
+
+</body>
+</html>
